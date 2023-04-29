@@ -31,7 +31,7 @@ jobs:
       - name: Create Paperclip Jar
         run: ./gradlew createReobfPaperclipJar --stacktrace
       - name: Rename JAR
-        run: cp build/libs/paper-paperclip-*-reobf.jar build/libs/bacon-paperclip-{{ steps.tag.outputs.TAG_NAME }}.jar
+        run: mv build/libs/paper-paperclip-*-reobf.jar build/libs/bacon-paperclip-{{ steps.tag.outputs.TAG_NAME }}.jar
       - name: Upload JAR
         uses: xresloader/upload-to-github-release@v1
         env:
