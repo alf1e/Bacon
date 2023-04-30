@@ -39,4 +39,4 @@ jobs:
         with:
           file: build/libs/bacon-paperclip-${{ steps.tag.outputs.TAG_NAME }}.jar
           draft: false
-
+          update_latest_release: true
