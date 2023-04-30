@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: alf1e <alfiewbarlow@gmail.com>
+Date: Sun, 30 Apr 2023 12:52:23 +0100
+Subject: [PATCH] Branding
+
+
+diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
+index 9f15d9dbdfa74a0640b1a2b4ff695609d4758a4c..7b24b47a9f24875fe866ea442ce9fd8db41e6110 100644
+--- a/src/main/java/net/minecraft/server/MinecraftServer.java
++++ b/src/main/java/net/minecraft/server/MinecraftServer.java
+@@ -1682,7 +1682,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+ 
+     @DontObfuscate
+     public String getServerModName() {
+-        return "Paper"; // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
++        return "Bacon"; // Bacon - Bacon > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
+     }
+ 
+     public SystemReport fillSystemReport(SystemReport details) {
+diff --git a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
+index 19d698893c5b3779ba3cc9f0344acead27e325d5..4cd7dac0c41f36e01424d1da6b47cff01c646adb 100644
+--- a/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
++++ b/src/main/java/net/minecraft/server/dedicated/DedicatedServer.java
+@@ -148,6 +148,22 @@ public class DedicatedServer extends MinecraftServer implements ServerInterface
+             }
+         };
+ 
++        DedicatedServer.LOGGER.info("""
++                        
++             _______                                         \s
++            |       \\                                        \s
++            | $$$$$$$\\  ______    _______   ______   _______ \s
++            | $$__/ $$ |      \\  /       \\ /      \\ |       \\\s
++            | $$    $$  \\$$$$$$\\|  $$$$$$$|  $$$$$$\\| $$$$$$$\\
++            | $$$$$$$\\ /      $$| $$      | $$  | $$| $$  | $$
++            | $$__/ $$|  $$$$$$$| $$_____ | $$__/ $$| $$  | $$
++            | $$    $$ \\$$    $$ \\$$     \\ \\$$    $$| $$  | $$
++             \\$$$$$$$   \\$$$$$$$  \\$$$$$$$  \\$$$$$$  \\$$   \\$$
++                                                             \s
++               Built by players, for players.                \s
++                                                             \s
++            """);
++
+         // CraftBukkit start - TODO: handle command-line logging arguments
+         java.util.logging.Logger global = java.util.logging.Logger.getLogger("");
+         global.setUseParentHandlers(false);
