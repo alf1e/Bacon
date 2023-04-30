@@ -38,4 +38,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: build/libs/bacon-paperclip-${{ steps.tag.outputs.TAG_NAME }}.jar
+          draft: false
 
