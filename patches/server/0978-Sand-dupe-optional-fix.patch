@@ -1,0 +1,49 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: alf1e <alfiewbarlow@gmail.com>
+Date: Sun, 30 Apr 2023 14:32:32 +0100
+Subject: [PATCH] Sand dupe optional fix
+
+
+diff --git a/src/main/java/net/minecraft/world/entity/item/FallingBlockEntity.java b/src/main/java/net/minecraft/world/entity/item/FallingBlockEntity.java
+index ace1c6337014ad166a628a9efff3373f6b96cdd8..2a828ec5383597d81bf19ff98d791db1d1073aba 100644
+--- a/src/main/java/net/minecraft/world/entity/item/FallingBlockEntity.java
++++ b/src/main/java/net/minecraft/world/entity/item/FallingBlockEntity.java
+@@ -48,6 +48,9 @@ import net.minecraft.world.phys.BlockHitResult;
+ import net.minecraft.world.phys.HitResult;
+ import net.minecraft.world.phys.Vec3;
+ import org.slf4j.Logger;
++// Bacon start
++import com.itsmealfie0.bacon.BaconConfig;
++// Bacon end
+ 
+ import org.bukkit.craftbukkit.event.CraftEventFactory; // CraftBukkit
+ 
+@@ -130,6 +133,13 @@ public class FallingBlockEntity extends Entity {
+ 
+     @Override
+     public void tick() {
++        // Bacon start - sand duping
++        if (!BaconConfig.allowSandDuping) {
++            if (this.isRemoved()) {
++                return;
++            }
++        }
++        // Bacon end - sand duping
+         if (this.blockState.isAir()) {
+             this.discard();
+         } else {
+@@ -142,6 +152,14 @@ public class FallingBlockEntity extends Entity {
+ 
+             this.move(MoverType.SELF, this.getDeltaMovement());
+ 
++            // Bacon start - sand duping
++            if (!BaconConfig.allowSandDuping) {
++                if (this.isRemoved()) {
++                    return;
++                }
++            }
++            // Bacon end - sand duping
++
+             // Paper start - Configurable EntityFallingBlock height nerf
+             if (this.level.paperConfig().fixes.fallingBlockHeightNerf.test(v -> this.getY() > v)) {
+                 if (this.dropItem && this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
